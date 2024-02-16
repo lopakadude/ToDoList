@@ -97,7 +97,26 @@
 	background-size: cover;
 }
 
-.checklists__task-check {}
+.checklists__task-check {
+	position: relative;
+}
+
+.checklists__task-check::before {
+	content: "";
+	position: absolute;
+	left: -3px;
+	top: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #FCFCFC;
+	z-index: 2;
+	border: 1px solid #5A7FFF;
+}
+
+.checklists__task-check:checked::before {
+	background-color: #5A7FFF;
+}
 
 .checklists__add-task {
 	background-color: transparent;
