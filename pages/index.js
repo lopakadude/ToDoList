@@ -1,44 +1,55 @@
-const up = document.querySelector('.ergonomics__button_type_up');
-const bottom = document.querySelector('.ergonomics__button_type_bottom');
-const table = document.querySelector('.ergonomics__table_type_top');
-const legsTable = document.querySelector('.ergonomics__table_type_bottom');
-const hole = document.querySelector('.control__hole')
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-		const girl = document.querySelector('.control__girl-image');
-    if (entry.isIntersecting) {
-      girl.classList.add('control__girl-image-appearance');
-			hole.classList.add('control__hole-sizing');
-			setTimeout(() => {
-				girl.classList.remove('control__girl-image-appearance');
-				hole.classList.remove('control__hole-sizing');
-				girl.classList.add('control__girl-image-levitation');
-			}, 30000)
-    }
-		console.log('ok')
-  });
+const checkLists = document.querySelector('.checklists');
+const checkList = checkLists.querySelector('.checklists__checklist');
+const subtitleOfChecklists = checkLists.querySelectorAll('.checklists__subtitle');
+const subtitleOfChecklist = checkList.querySelector('.checklists__subtitle');
+const buttonEditSubtitleOfChecklist = checkList.querySelector('.checklists__edit-title');
+const tasks = checkList.querySelector('.checklists__tasks');
+const task = tasks.querySelector('.checklists__task');
+const buttonAddCheckList = document.querySelector('.checklists__add');
+const buttonAddTask = checkList.querySelector('.checklists__add-task');
+const buttonDeleteTask = task.querySelector('.checklists__delete-task');
+
+
+buttonAddTask.addEventListener('click', () => {
+	const newTask = document.createElement('li');
+	newTask.className = 'checklists__task';
+	newTask.innerHTML = `
+			<input type="checkbox" class="checklists__task-check">
+					<p class="checklists__task-name">Пункт 1</p>
+					<button class="checklists__delete-task"></button>
+			`
+	tasks.insertBefore(newTask, buttonDeleteTask)
 });
-observer.observe(hole);
 
-up.addEventListener('click', () => {
-	if (table.classList.contains('ergonomics__table_type_top-bottom')) {
-		table.classList.remove('ergonomics__table_type_top-bottom')
-	};
-	table.classList.add('ergonomics__table_type_top-top');
-
-	if (legsTable.classList.contains('ergonomics__table_type_bottom-top')) {
-		legsTable.classList.remove('ergonomics__table_type_bottom-top')
-	};
-	legsTable.classList.add('ergonomics__table_type_bottom-bottom');
+buttonDeleteTask.addEventListener('click', () => {
+task.remove()
 })
 
-bottom.addEventListener('click', () => {
-	if (table.classList.contains('ergonomics__table_type_top-top')) {
-		table.classList.remove('ergonomics__table_type_top-top')
-	};
-	table.classList.add('ergonomics__table_type_top-bottom');
-	if (legsTable.classList.contains('ergonomics__table_type_bottom-bottom')) {
-		legsTable.classList.remove('ergonomics__table_type_bottom-bottom')
-	};
-	legsTable.classList.add('ergonomics__table_type_bottom-top');
+buttonAddCheckList.addEventListener('click', () => {
+	const newCheckList = document.createElement('div');
+	newCheckList.className = 'checklists__checklist';
+	newCheckList.innerHTML = `
+			<div class="checklists__name">
+				<input class="checklists__subtitle" value="Чек-лист" readonly></input>
+				<button class="checklists__edit-title"></button>
+			</div>
+			<button class="checklists__delete">Удалить чек-лист</button>
+			<ul class="checklists__tasks">
+				<li class="checklists__task">
+					<input type="checkbox" class="checklists__task-check">
+					<p class="checklists__task-name">Пункт 1</p>
+					<button class="checklists__delete-task"></button>
+				</li>
+			</ul>
+			<button class="checklists__add-task">+ добавить пункт</button>
+			`
+checkLists.append(newCheckList);
+})
+
+buttonEditSubtitleOfChecklist.addEventListener('click', () => {
+	subtitleOfChecklist.readOnly = false;
+});
+
+buttonEditSubtitleOfChecklist.addEventListener('keydown', () => {
+	subtitleOfChecklist.readOnly = true;
 })
