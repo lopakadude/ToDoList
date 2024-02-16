@@ -1,0 +1,115 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/Inter/fonts.css);
+@import url(../blocks/body/body.css);
+@import url(../blocks/checklists/checklists.css);
+@import url(../blocks/checklists/__title/checklists__title.css);
+@import url(../blocks/checklists/__menu/checklists__menu.css);
+@import url(../blocks/checklists/__types/checklists__types.css);
+@import url(../blocks/checklists/__type/checklists__type.css);
+@import url(../blocks/checklists/__add/checklists__add.css);
+
+.checklists__checklist {
+	padding: 10px;
+	background-color: #fcfcfc;
+	border-radius: 15px;
+	display: grid;
+	grid-template-columns: 1fr 172px;
+	grid-template-rows: 54px auto 24px;
+	justify-content: space-between;
+	padding: 10px;
+	margin: 20px 0 0 0;
+}
+
+.checklists__name {
+	display: flex;
+	column-gap: 15px;
+	align-items: baseline;
+}
+
+.checklists__subtitle {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 24px;
+	padding: 0;
+	margin: 0 0 50px 0;
+}
+
+.checklists__edit-title {
+	width: 20px;
+	height: 18px;
+	background-color: transparent;
+	border: none;
+	background-image: url(../images/edit.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 0;
+	margin: 0;
+}
+
+.checklists__delete {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.checklists__tasks {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	grid-column: 1 / -1;
+	grid-row: 2;
+}
+
+.checklists__task {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
+	border-bottom: 1px solid #BEB5B5;
+}
+
+.checklists__task-name {
+	flex: 1 1 auto;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+	padding: 0;
+	margin: 0 0 0 10px;
+}
+
+.checklists__delete-task {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin: 0 30px 0 0;
+	width: 20px;
+	height: 26px;
+	background-image: url(../images/delete.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.checklists__task-check {}
+
+.checklists__add-task {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	color: blue;
+	grid-column: 1;
+	grid-row: 3;
+	justify-self: start;
+	width: 300px;
+	font-size: 20px;
+	line-height: 24px;
+}
