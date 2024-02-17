@@ -1,0 +1,8 @@
+.checklists__task-list {
+	list-style: none;
+	padding: 0;
+	margin: 40px 0 0 0;
+	width: 100%;
+	grid-column: 1 / -1;
+	grid-row: 2;
+}

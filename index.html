@@ -21,34 +21,19 @@
 		</div>
 		<div class="checklists__checklist">
 			<div class="checklists__name">
-				<input class="checklists__subtitle" value="Чек-лист" readonly></input>
+				<input class="checklists__subtitle" placeholder='Нажмите на кнопку справа' readonly type='text'></input>
 				<button class="checklists__edit-title"></button>
 			</div>
 			<button class="checklists__delete">Удалить чек-лист</button>
-			<ul class="checklists__tasks">
+			<ul class="checklists__task-list">
 				<li class="checklists__task">
 					<input type="checkbox" class="checklists__task-check">
-					<p class="checklists__task-name">Пункт 1</p>
-					<button class="checklists__delete-task"></button>
+					<input class="checklists__task-name" placeholder='пункт чек-листа' type='text'>
+					<button class="checklists__task-delete"></button>
 				</li>
 			</ul>
 			<button class="checklists__add-task">+ добавить пункт</button>
 		</div>
-				<div class="checklists__checklist">
-					<div class="checklists__name">
-						<input class="checklists__subtitle" value="Чек-лист" readonly></input>
-						<button class="checklists__edit-title"></button>
-					</div>
-					<button class="checklists__delete">Удалить чек-лист</button>
-					<ul class="checklists__tasks">
-						<li class="checklists__task">
-							<input type="checkbox" class="checklists__task-check">
-							<p class="checklists__task-name">Пункт 1</p>
-							<button class="checklists__delete-task"></button>
-						</li>
-					</ul>
-					<button class="checklists__add-task">+ добавить пункт</button>
-				</div>
 	</section>
 	<script src="./pages/index.js"></script>
 </body>

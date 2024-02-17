@@ -1,0 +1,11 @@
+.checklists__checklist {
+	padding: 10px;
+	background-color: #fcfcfc;
+	border-radius: 15px;
+	display: grid;
+	grid-template-columns: 1fr 172px;
+	grid-template-rows: 24px auto 24px;
+	justify-content: space-between;
+	padding: 10px;
+	margin: 20px 0 0 0;
+}

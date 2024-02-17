@@ -2,25 +2,21 @@ const checkListSection = document.querySelector('.checklists');
 const checkLists = checkListSection.querySelectorAll('.checklists__checklist');
 const buttonAddCheckList = document.querySelector('.checklists__add');
 
-// const subtitlesOfChecklists = document.querySelectorAll('.checklists__subtitle');
-// console.log(subtitlesOfChecklists);
-
-// const buttonsEditSubtitles = document.querySelectorAll('.checklists__edit-title');
-// console.log(buttonsEditSubtitles);
-
 function renderCheckList(checkList) {
-	const taskList = checkList.querySelector('.checklists__tasks');
-
+	const taskList = checkList.querySelector('.checklists__task-list');
 	const buttonAddTask = checkList.querySelector('.checklists__add-task');
-
 	const buttonDeleteCheckList = checkList.querySelector('.checklists__delete');
+	const buttonEditTitle = checkList.querySelector('.checklists__edit-title');
+	const titleOfCheckList = checkList.querySelector('.checklists__subtitle');
+	const iconEdit = checkList.querySelector('.checklists__edit-title');
 
 	function renderTask(task) {
-		const buttonDeleteTask = task.querySelector('.checklists__delete-task');
+		const buttonDeleteTask = task.querySelector('.checklists__task-delete');
 		const checkBox = task.querySelector('.checklists__task-check');
 		const taskName = task.querySelector('.checklists__task-name');
 
 		buttonDeleteTask.addEventListener('click', () => {
+			console.log('ok');
 			task.remove()
 		})
 
@@ -32,6 +28,7 @@ function renderCheckList(checkList) {
 			}
 		})
 	}
+
 	const tasks = taskList.querySelectorAll('.checklists__task');
 	tasks.forEach((task) => {
 		renderTask(task);
@@ -43,21 +40,33 @@ function renderCheckList(checkList) {
 	})
 
 	buttonAddTask.addEventListener('click', () => {
-		const taskList = checkList.querySelector('.checklists__tasks');
+		const taskList = checkList.querySelector('.checklists__task-list');
 		const newTask = document.createElement('li');
 		newTask.className = 'checklists__task';
 		newTask.innerHTML = `
 			<input type="checkbox" class="checklists__task-check">
-					<p class="checklists__task-name">Пункт 1</p>
-					<button class="checklists__delete-task"></button>
+			<input class="checklists__task-name" placeholder='пункт чек-листа' type='text'>
+			<button class="checklists__task-delete"></button>
 			`
 		taskList.append(newTask);
 		renderTask(newTask);
 	});
+
+	buttonEditTitle.addEventListener('click', () => {
+		if (titleOfCheckList.readOnly) {
+			titleOfCheckList.readOnly = false;
+			titleOfCheckList.placeholder = 'Введите название чек-листа';
+			iconEdit.classList.add('checklists__confirm-title')
+		} else {
+			titleOfCheckList.readOnly = true;
+			titleOfCheckList.placeholder = 'Нажмите на кнопку справа';
+			iconEdit.classList.remove('checklists__confirm-title')
+		}
+	})
 }
 
 checkLists.forEach((checkList) => {
-	renderCheckList(checkList)
+	renderCheckList(checkList);
 })
 
 buttonAddCheckList.addEventListener('click', () => {
@@ -65,15 +74,22 @@ buttonAddCheckList.addEventListener('click', () => {
 	newCheckList.className = 'checklists__checklist';
 	newCheckList.innerHTML = `
 			<div class="checklists__name">
-				<input class="checklists__subtitle" value="Чек-лист" readonly></input>
+				<input 
+					class="checklists__subtitle"
+					placeholder='Нажмите на кнопку справа'
+					readonly
+					type='text'>
 				<button class="checklists__edit-title"></button>
 			</div>
 			<button class="checklists__delete">Удалить чек-лист</button>
-			<ul class="checklists__tasks">
+			<ul class="checklists__task-list">
 				<li class="checklists__task">
 					<input type="checkbox" class="checklists__task-check">
-					<p class="checklists__task-name">Пункт 1</p>
-					<button class="checklists__delete-task"></button>
+					<input 
+					class="checklists__task-name"
+					placeholder='пункт чек-листа'
+					type='text'>
+					<button class="checklists__task-delete"></button>
 				</li>
 			</ul>
 			<button class="checklists__add-task">+ добавить пункт</button>
@@ -82,10 +98,3 @@ buttonAddCheckList.addEventListener('click', () => {
 	renderCheckList(newCheckList);
 })
 
-// buttonEditSubtitleOfChecklist.addEventListener('click', () => {
-// 	subtitleOfChecklist.readOnly = false;
-// });
-
-// buttonEditSubtitleOfChecklist.addEventListener('keydown', () => {
-// 	subtitleOfChecklist.readOnly = true;
-// })

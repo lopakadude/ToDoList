@@ -1,0 +1,9 @@
+.checklists__delete {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+}

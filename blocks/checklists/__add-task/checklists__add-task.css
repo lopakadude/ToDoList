@@ -1,0 +1,14 @@
+.checklists__add-task {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	color: blue;
+	grid-column: 1;
+	grid-row: 3;
+	justify-self: start;
+	width: 300px;
+	font-size: 20px;
+	line-height: 24px;
+}
