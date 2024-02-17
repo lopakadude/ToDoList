@@ -33,7 +33,6 @@ function renderCheckLists() {
 
 				checkBox.addEventListener('click', () => {
 					if (checkBox.checked) {
-						console.log('ok');
 						taskName.classList.add('checklists__task-name_checked')
 					} else {
 						taskName.classList.remove('checklists__task-name_checked')
