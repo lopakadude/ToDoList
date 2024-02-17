@@ -86,6 +86,10 @@
 	margin: 0 0 0 10px;
 }
 
+.checklists__task-name_checked {
+	text-decoration: line-through;
+}
+
 .checklists__delete-task {
 	background-color: transparent;
 	border: none;
