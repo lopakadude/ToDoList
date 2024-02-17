@@ -1,5 +1,6 @@
 const checkListSection = document.querySelector('.checklists');
-
+const checkLists = checkListSection.querySelectorAll('.checklists__checklist');
+const buttonAddCheckList = document.querySelector('.checklists__add');
 
 // const subtitlesOfChecklists = document.querySelectorAll('.checklists__subtitle');
 // console.log(subtitlesOfChecklists);
@@ -7,59 +8,57 @@ const checkListSection = document.querySelector('.checklists');
 // const buttonsEditSubtitles = document.querySelectorAll('.checklists__edit-title');
 // console.log(buttonsEditSubtitles);
 
-const buttonAddCheckList = document.querySelector('.checklists__add');
+function renderCheckList(checkList) {
+	const taskList = checkList.querySelector('.checklists__tasks');
 
-function renderCheckLists() {
-	const checkListSection = document.querySelector('.checklists');
+	const buttonAddTask = checkList.querySelector('.checklists__add-task');
 
-	const checkLists = checkListSection.querySelectorAll('.checklists__checklist');
-	checkLists.forEach((checkList) => {
-		const taskList = checkList.querySelector('.checklists__tasks');
+	const buttonDeleteCheckList = checkList.querySelector('.checklists__delete');
 
-		const buttonAddTask = checkList.querySelector('.checklists__add-task');
+	function renderTask(task) {
+		const buttonDeleteTask = task.querySelector('.checklists__delete-task');
+		const checkBox = task.querySelector('.checklists__task-check');
+		const taskName = task.querySelector('.checklists__task-name');
 
-		const buttonDeleteCheckList = checkList.querySelector('.checklists__delete');
-
-		function renderTasks() {
-			const tasks = taskList.querySelectorAll('.checklists__task');
-			tasks.forEach((task) => {
-				const buttonDeleteTask = task.querySelector('.checklists__delete-task');
-				const checkBox = task.querySelector('.checklists__task-check');
-				const taskName = task.querySelector('.checklists__task-name');
-
-				buttonDeleteTask.addEventListener('click', () => {
-					task.remove()
-				})
-
-				checkBox.addEventListener('click', () => {
-					if (checkBox.checked) {
-						taskName.classList.add('checklists__task-name_checked')
-					} else {
-						taskName.classList.remove('checklists__task-name_checked')
-					}
-				})
-			})
-		}
-
-		buttonDeleteCheckList.addEventListener('click', () => {
-			checkList.remove()
+		buttonDeleteTask.addEventListener('click', () => {
+			task.remove()
 		})
 
-		buttonAddTask.addEventListener('click', () => {
-			const taskList = checkList.querySelector('.checklists__tasks');
-			const newTask = document.createElement('li');
-			newTask.className = 'checklists__task';
-			newTask.innerHTML = `
+		checkBox.addEventListener('click', () => {
+			if (checkBox.checked) {
+				taskName.classList.add('checklists__task-name_checked')
+			} else {
+				taskName.classList.remove('checklists__task-name_checked')
+			}
+		})
+	}
+	const tasks = taskList.querySelectorAll('.checklists__task');
+	tasks.forEach((task) => {
+		renderTask(task);
+	})
+
+
+	buttonDeleteCheckList.addEventListener('click', () => {
+		checkList.remove()
+	})
+
+	buttonAddTask.addEventListener('click', () => {
+		const taskList = checkList.querySelector('.checklists__tasks');
+		const newTask = document.createElement('li');
+		newTask.className = 'checklists__task';
+		newTask.innerHTML = `
 			<input type="checkbox" class="checklists__task-check">
 					<p class="checklists__task-name">Пункт 1</p>
 					<button class="checklists__delete-task"></button>
 			`
-			taskList.append(newTask);
-			renderTasks()
-		});
-		renderTasks();
-	})
+		taskList.append(newTask);
+		renderTask(newTask);
+	});
 }
+
+checkLists.forEach((checkList) => {
+	renderCheckList(checkList)
+})
 
 buttonAddCheckList.addEventListener('click', () => {
 	const newCheckList = document.createElement('div');
@@ -80,10 +79,8 @@ buttonAddCheckList.addEventListener('click', () => {
 			<button class="checklists__add-task">+ добавить пункт</button>
 			`
 	checkListSection.append(newCheckList);
-	renderCheckLists();
+	renderCheckList(newCheckList);
 })
-
-renderCheckLists();
 
 // buttonEditSubtitleOfChecklist.addEventListener('click', () => {
 // 	subtitleOfChecklist.readOnly = false;
