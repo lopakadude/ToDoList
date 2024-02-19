@@ -6,8 +6,11 @@
 @import url(../blocks/checklists/__menu/checklists__menu.css);
 @import url(../blocks/checklists/__types/checklists__types.css);
 @import url(../blocks/checklists/__type/checklists__type.css);
+@import url(../blocks/checklists/__type/_selected/checklists__type_selected.css);
 @import url(../blocks/checklists/__add/checklists__add.css);
 @import url(../blocks/checklists/__checklist/checklists__checklist.css);
+@import url(../blocks/checklists/__checklist/_type/checklists__checklist_type_done.css);
+@import url(../blocks/checklists/__checklist/_type/checklists__checklist_type_active.css);
 @import url(../blocks/checklists/__name/checklists__name.css);
 @import url(../blocks/checklists/__subtitle/checklists__subtitle.css);
 @import url(../blocks/checklists/__edit-title/checklists__edit-title.css);

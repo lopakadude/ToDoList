@@ -6,9 +6,5 @@
 	font-weight: 300;
 	margin: 0;
 	padding: 0;
-}
-
-.checklists__type_active {
-	font-weight: 500;
-	text-decoration: underline;
+	cursor: pointer;
 }

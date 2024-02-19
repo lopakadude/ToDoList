@@ -13,9 +13,10 @@
 		<h1 class="checklists__title">Чек-листы</h1>
 		<div class="checklists__menu">
 			<nav class="checklists__types">
-				<button class="checklists__type checklists__type_active">Все задачи</button>
-				<button class="checklists__type">Активные</button>
-				<button class="checklists__type">Выполненные</button>
+				<button class="checklists__type checklists__type_selected allCheckLists">Все задачи</button>
+				<button class="checklists__type activeCheckLists">Активные</button>
+				<button class="checklists__type
+				doneCheckLists">Выполненные</button>
 			</nav>
 			<button class="checklists__add">+ Добавить чек-лист</button>
 		</div>
@@ -27,7 +28,7 @@
 			<button class="checklists__delete">Удалить чек-лист</button>
 			<ul class="checklists__task-list">
 				<li class="checklists__task">
-					<input type="checkbox" class="checklists__task-check">
+					<input type="checkbox" class="checklists__task-check" >
 					<input class="checklists__task-name" placeholder='пункт чек-листа' type='text'>
 					<button class="checklists__task-delete"></button>
 				</li>
